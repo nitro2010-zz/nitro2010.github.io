@@ -110,14 +110,8 @@ function initStorage(loadhook) {
 		});
 		
 		clearhistoryhook = hook(clearhistoryhook, function() {
-			var tx = db.transaction('history', 'readwrite').objectStore("history");
-			tx.openCursor().onsuccess = function(event) {
-				var cursor = event.target.result;
-				if (cursor) {
-					cursor.delete();
-					cursor.continue();
-				}
-			};
+			var tx = db.transaction('history', 'readwrite');
+			tx.objectStore('history').clear();
 		});
     };
   };
@@ -569,12 +563,12 @@ window.addEventListener('load', function() {
       alert("Przepraszamy, to nie jest obsługiwane przez twoją przeglądarkę");
   });
   $('#clearhistory').addEventListener('click', function() {
-    if (!confirm('Clear history: Are you sure?')) return;
+    if (!confirm('Czyszczenie historii: Czy jesteś tego pewny?')) return;
 	clearhistoryhook();
   });
   $('#clearlibrary').addEventListener('click', function() {
-	if (!confirm('Clear library: Are you sure?')) return;
-	logo.run('erall');
+	if (!confirm('Czyszczenie biblioteki: Czy jesteś tego pewny?')) return;
+	logo.run('usw');
   });
 
   function demo(param) {
