@@ -1039,7 +1039,7 @@ test("Struktury kontrolne", function () {
   this.assert_equals('przypisz "x 0  dopókinie :x > 10 [ przypisz "x :x + 1 ]     :x', 11);
 
   this.assert_equals('oto vowelp :letter ' +
-                     '  wynik wybierz :letter [ [[a e i o u] "true] [else "false] ] ' +
+                     '  wynik wybierz :letter [ [[a e i o u] "true] [inaczej "false] ] ' +
                      'już ' +
                      '(lista vowelp "a vowelp "b', ['true', 'false']);
 
@@ -1050,7 +1050,7 @@ test("Struktury kontrolne", function () {
                      '  wy warunki [ [ [pustep :numbers]      [] ] ' +
                      '            [ [evenp pierwszy :numbers] ' +
                      '              nap pierwszy :numbers evens bezpierw :numbers] '+
-                     '            [ else evens bezpierw :numbers] '+
+                     '            [ inaczej evens bezpierw :numbers] '+
                      ' ] ' +
                      'już ' +
                      'evens [ 1 2 3 4 5 6 ]', ['2', '4', '6']);
