@@ -110,8 +110,14 @@ function initStorage(loadhook) {
 		});
 		
 		clearhistoryhook = hook(clearhistoryhook, function() {
-			var tx = db.transaction('history', 'readwrite');
-			tx.objectStore('history').clear();
+			var tx = db.transaction('history', 'readwrite').objectStore("history");
+			tx.openCursor().onsuccess = function(event) {
+				var cursor = event.target.result;
+				if (cursor) {
+					cursor.delete();
+					cursor.continue();
+				}
+			};
 		});
     };
   };
