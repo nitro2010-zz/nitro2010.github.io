@@ -35,7 +35,7 @@ if (typeof CodeMirror !== 'undefined') {
         return (indent + 1 ) * size;
       case 'defn-vars':
       case 'defn-body':
-        if (/^JUŻ\b/i.test(textAfter))
+        if (/^JU\u017B/i.test(textAfter))
           return indent * size;
         return (indent + 1 ) * size;
       default:
@@ -47,7 +47,7 @@ if (typeof CodeMirror !== 'undefined') {
       var name, i;
 
 	  
-	  console.log(stream.match('/już/',true));
+	  console.log(stream.match('/ju\u017C/',true));
 	  
       if (stream.eatSpace()) {
         return null;
@@ -63,7 +63,7 @@ if (typeof CodeMirror !== 'undefined') {
           state.state = 'defn-name';
           return 'logo-defn-start';
         }
-        if (stream.match(/^JUŻ\b/i, true)) {
+        if (stream.match(/^JU\u017B/i, true)) {
           return 'logo-error';
         }
       }
@@ -87,7 +87,7 @@ if (typeof CodeMirror !== 'undefined') {
 
       if (state.state === 'defn-body') {
 
-        if (stream.match(/^JUŻ\b/i, true)) {
+        if (stream.match(/^JU\u017B/i, true)) {
           state.state = 'normal';
           return 'logo-defn-end';
         }
